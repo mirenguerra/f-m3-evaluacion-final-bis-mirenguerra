@@ -9,8 +9,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       repos: [],
-      isLoading: true
+      isLoading: true,
+      filterName: ""
     };
+    this.handleSearchName = this.handleSearchName.bind(this);
   }
 
   componentDidMount() {
@@ -26,13 +28,24 @@ class App extends React.Component {
     });
   }
 
+  handleSearchName(event) {
+    const searchedName = event.currentTarget.value;
+    this.setState({
+      filterName: searchedName
+    });
+  }
+
   render() {
     if (this.state.isLoading === true) {
       return <p>Loading...</p>;
     } else {
       return (
         <div className="App">
-          <Home repos={this.state.repos} />
+          <Home
+            repos={this.state.repos}
+            onChangeName={this.handleSearchName}
+            filterName={this.state.filterName}
+          />
           <RepoDetailPage />
         </div>
       );

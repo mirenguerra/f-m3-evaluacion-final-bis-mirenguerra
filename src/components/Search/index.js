@@ -1,17 +1,28 @@
-import React from 'react';
-import './styles.scss';
+import React from "react";
+import "./styles.scss";
+import PropTypes from "prop-types";
 
 class Search extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <div className="App">
+      <div className="Search">
+        <form>
+          <label htmlFor="name">Search by name: </label>
+          <input
+            className="input"
+            name="name"
+            type="text"
+            value={this.props.filterName}
+            onChange={this.props.onChangeName}
+          />
+        </form>
       </div>
     );
   }
+}
+Search.propTypes={
+  filterName: PropTypes.string.isRequired,
+  onChangeName: PropTypes.func.isRequired,
 }
 
 export default Search;
