@@ -27,12 +27,16 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <Home repos={this.state.repos} />
-        <RepoDetailPage />
-      </div>
-    );
+    if (this.state.isLoading === true) {
+      return <p>Loading...</p>;
+    } else {
+      return (
+        <div className="App">
+          <Home repos={this.state.repos} />
+          <RepoDetailPage />
+        </div>
+      );
+    }
   }
 }
 
