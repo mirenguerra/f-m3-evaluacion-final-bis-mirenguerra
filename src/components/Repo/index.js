@@ -1,17 +1,23 @@
 import React from 'react';
 import './styles.scss';
+import PropTypes from 'prop-types';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class Repo extends React.Component {
   render() {
     return (
-      <div className="App">
+      <div className="Repo">
+        <h2 className="Repo__name">{this.props.name}</h2>
+        <p className="Repo__description">{this.props.description}</p>
+        <p className="Repo__language">{this.props.language}</p>
       </div>
     );
   }
 }
 
-export default App;
+Repo.propTypes={
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  language: PropTypes.string.isRequired,
+}
+
+export default Repo;
